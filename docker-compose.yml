@@ -16,6 +16,9 @@ services:
       - "3001:3000"
     depends_on:
       - backend
+    volumes:
+      - .:/app
+      - /app/node_modules
 
   db:
     image: postgres:15
