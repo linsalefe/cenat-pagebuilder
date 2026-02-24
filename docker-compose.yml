@@ -9,6 +9,7 @@ services:
       - db
     volumes:
       - ./backend:/app
+      - uploads:/app/uploads
 
   frontend:
     build: .
@@ -31,3 +32,4 @@ services:
 
 volumes:
   pgdata:
+  uploads:

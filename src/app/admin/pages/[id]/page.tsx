@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
+import ImageUpload from "@/components/ImageUpload";
 import axios from "axios";
 import { SECTIONS, TEMPLATE_DEFAULTS, SectionConfig } from "@/lib/sections";
 
@@ -293,7 +294,14 @@ export default function PageEditor() {
                       <label className="block text-sm font-medium text-gray-700 mb-1">
                         {field.label}
                       </label>
-                      {field.type === "textarea" ? (
+                      {field.type === "image" ? (
+                        <ImageUpload
+                          value={(section.data[field.key] as string) || ""}
+                          onChange={(url) =>
+                            updateSectionData(section.id, field.key, url)
+                          }
+                        />
+                      ) : field.type === "textarea" ? (
                         <textarea
                           value={(section.data[field.key] as string) || ""}
                           onChange={(e) =>
